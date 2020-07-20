@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+}
+body {
+    background: linear-gradient(-60deg, #021B79, #0575E6, #204E9B);
+    height: 100vh;
+    background-position: fixed;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+}
+button {
+    cursor: pointer;
+}
+.location {
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.location h1 {
+    font-size: 4rem;
+    padding:15px 0 ;
+}
+.location button {
+    font-family: 'Quicksand', sans-serif;
+    background-color:#082eb633;
+    border: none;
+    padding: 7px 10px;
+    cursor: pointer; 
+    color: white;
+    border-radius: 5px;
+    outline: none;
+}
+.location button:active {
+    transform: scale(0.95);
+}
+
+.weather {
+    height: 40vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; 
+    position: relative;
+}
+.weather-icon {
+    align-self: flex-start;
+    position: absolute;
+    /* right: 20px; */
+    text-align: center;
+}
+.weather-icon .icon {
+    width: 7rem;
+    /* height: fit-content; */
+    /* border: 1px solid; */
+}
+.weather-icon .description {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    font-weight: bold;
+    /* padding: 10px 0; */
+}
+.weather .parameters {
+    width:100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+.parameter {
+    padding:10px;
+    display: grid;
+    align-items: center;
+    cursor: pointer;
+}
+.parameter .icon {
+    font-size: 2.5rem;
+}
+.parameters .value {
+    font-size: 4rem;
+}
+.parameters .unit {
+    font-size: 2rem;
+    margin: 5px;
+}
+
+
+/* .app-display {
+    display:none;
+} */
+/* change location pop up */
+.location-form {
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.336);
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+}
+.form-body {
+    background-color: whitesmoke;
+    color: #0575E6;
+    padding: 10px;
+    width: 70%;
+    max-width: 400px;
+    border-radius: 3px;
+    position: absolute;
+    /* animation: coming 0.2s forwards  reverse; */
+    top: -260px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+.header span {
+    color: red;
+    font-size: 2.2rem;
+    font-weight:  bold;
+    cursor: pointer;
+}
+.header span:active {
+    transform: scale(0.95);
+}
+.form-body .input {
+    width: 100%;
+    margin:5px 0 20px 0;
+    padding: 10px 5px;
+    background-color: transparent;
+    border-radius: 6px;
+    border:1px solid #ccc;
+    font-size: 1.7rem;
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+}
+.form-body .input:focus {
+    outline-color: #3591ec;
+}
+.form-body .city{
+    text-transform: capitalize;
+}
+.form-body label {
+    color: #333;
+}
+.form-body button.input {
+    background-color: #2486ee;
+    color: white;
+    border: 1px solid #2486ee;
+}
+
+.alert {
+    text-align: center;
+}
+.error {
+    color: red;
+}
+/* animation for the location form */
+@keyframes slideDown {
+    from{
+        opacity: 0;
+        top: -259px;
+    }
+    to {
+        opacity: 1;
+        top: 25%;
+    }
+}
+@keyframes slideUp {
+    to{
+        opacity: 0;
+        top: -259px;
+    }
+    from {
+        opacity: 1;
+        top: 25%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    html{
+        font-size: 6px;
+    }
+    .weather-icon .icon {
+        width: 12rem;
+    }
+}
