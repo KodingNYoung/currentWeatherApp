@@ -173,6 +173,7 @@ button {
 .alert {
     text-align: center;
     color: red;
+    text-transform: uppercase;
 }
 .no-city {
     background-color: whitesmoke;

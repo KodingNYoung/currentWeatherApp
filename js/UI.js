@@ -75,7 +75,7 @@ class UI {
         // create div
         const alert = document.createElement("div");
         alert.className =`alert ${className}`;
-        alert.textContent = message;
+        alert.textContent = `${message} !`;
 
         // insert alert into DOM
         parent.insertBefore(alert, sibling);
