@@ -53,22 +53,36 @@ class UI {
     }
 
     // show form alert
-    showFormAlert (message) {
-        // create div
-        const alert = document.createElement("div");
-        alert.className = "alert error";
-        alert.textContent = message;
-
+    showFormAlert (message, className) {
         // get sibling - form
         const form = document.querySelector("form");
 
-        // insert alert into DOM
-        this.formBody.insertBefore(alert, form);
-
-        // after 2 sec remove the alert
-        setTimeout(this.clearAlerts, 2000)
+        this.showAlert(message, className, form, this.formBody);
     }
 
+    showNoCityToast (message, className) {
+        // get sibling - location text
+        const locationHead = document.querySelector(".location-heading");
+
+        // get Parent - location div
+        const location = document.querySelector(".location");
+
+        // show the alert
+        this.showAlert(message, className, locationHead, location);
+    }
+
+    showAlert (message, className, sibling, parent) {
+        // create div
+        const alert = document.createElement("div");
+        alert.className =`alert ${className}`;
+        alert.textContent = message;
+
+        // insert alert into DOM
+        parent.insertBefore(alert, sibling);
+
+        // after 2 sec remove the alert
+        setTimeout(this.clearAlerts, 2000);
+    }
     // clear any alerts
     clearAlerts () {
         const alert = document.querySelector(".alert");
@@ -98,6 +112,8 @@ class UI {
         this.lon.textContent = `${weatherUpdate.coord.lon}°`;
         this.lat.textContent = `${weatherUpdate.coord.lat}°`;
     }
+
+    
 }
 
 

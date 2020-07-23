@@ -5,10 +5,14 @@ class Weather{
     }
 
     async fetchWeatherUpdate (city, country) {
-        const weatherResponse = await fetch(`${this.APIurl}?q=${city},${country}&appid=${this.APIkey}`);
+        try{
+            const weatherResponse = await fetch(`${this.APIurl}?q=${city},${country}&appid=${this.APIkey}`);
 
-        const JSONresult = await weatherResponse.json(); 
+            const JSONresult = await weatherResponse.json(); 
 
-        return JSONresult;
+            return JSONresult;
+        }catch(err) {
+            console.log(err.message)
+        }
     }
 }

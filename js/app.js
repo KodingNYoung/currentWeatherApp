@@ -38,19 +38,20 @@ updateBtn.addEventListener("click", (e) => {
 
     // if city input is empty show alert
     if (city === "") {
-        ui.showFormAlert("City is required!");
+        ui.showFormAlert("City is required!", "");
     }else{
         // fetch the weather updates for the location
         const update = weather.fetchWeatherUpdate(city, country);
         update.then((val) => {
             if (val.message){
                 // show alert
-                console.log(val.message, val.cod)
+                ui.showNoCityToast(val.message, "no-city");
             }else{
                 // display it
                 ui.updateUI(val)
             }
         })
+        .catch((err) => console.log(err))
         
         // clear form
         ui.clearForms();
