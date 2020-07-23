@@ -77,9 +77,12 @@ button {
 }
 .parameter {
     padding:10px;
-    display: grid;
     align-items: center;
     cursor: pointer;
+    display: grid;
+}
+.parameter .icon img {
+    width: 3rem;
 }
 .parameter .icon {
     font-size: 2.5rem;

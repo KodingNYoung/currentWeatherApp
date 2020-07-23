@@ -5,7 +5,7 @@ class UI {
         this.cityInput = document.getElementById("city");
         this.countryInput = document.getElementById("country");
 
-        this.iconURL = "http://openweathermap.org/img/w/";
+        this.iconURL = "https://openweathermap.org/img/w/";
         this.description = document.querySelector(".description");
         this.weatherIcon = document.querySelector(".weather-icon .icon")
         // paremeter elements
