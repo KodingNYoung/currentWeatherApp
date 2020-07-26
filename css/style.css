@@ -164,10 +164,33 @@ button {
 .form-body label {
     color: #333;
 }
-.form-body button.input {
-    background-color: #2486ee;
+
+.form-body button.btn {
     color: white;
+    margin:5px 0 20px 0;
+    padding: 10px 5px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 6px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form-body button.update {
+    background-color: #2486ee;
     border: 1px solid #2486ee;
+    /* width: 45%; */
+    float: right;
+}
+
+.form-body button.auto-update {
+    background-color: #09c009;
+    border: 1px solid #09c009;
+    /* width: 45%; */
+}
+
+.form-body button.auto-update:focus {
+    outline-color: #09c009;
 }
 
 .alert {

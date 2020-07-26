@@ -68,6 +68,7 @@
         <div class="form-body" id="form-body">
             <div class="header">
                 <h2>Change location</h2>
+                
                 <span class="close" id="close-btn"> x </span>
             </div>
             <!-- <div class="alert error"> city is required...</div> -->
@@ -78,11 +79,14 @@
 
                 <label for="coutry">Country code (optional)</label>
                 <input class="country input" type="text" name="country" id="country" placeholder="e.g NG for Nigeria">
-                <button class="input" id="update-btn">update location</button>
+                <button class="update btn" id="update-btn">update location</button>
             </form>
+
+            <button class="auto-update btn" id="auto-update-btn">Auto update location</button>
         </div>
     </div>
-
+    
+    <script src="js/navigator.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/UI.js"></script>
     <script src="js/app.js"></script>
