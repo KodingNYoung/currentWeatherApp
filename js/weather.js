@@ -4,9 +4,21 @@ class Weather{
         this.APIurl = "https://api.openweathermap.org/data/2.5/weather"; 
     }
 
-    async fetchWeatherUpdate (city, country) {
+    async fetchWeatherUpdateByCity (city, country) {
         try{
             const weatherResponse = await fetch(`${this.APIurl}?q=${city},${country}&appid=${this.APIkey}`);
+
+            const JSONresult = await weatherResponse.json(); 
+
+            return JSONresult;
+        }catch(err) {
+            console.log(err.message)
+        }
+    }
+
+    async fetchWeatherUpdateByCoords (lat, long) {
+        try{
+            const weatherResponse = await fetch(`${this.APIurl}?lat=${city}&lon=${country}&appid=${this.APIkey}`);
 
             const JSONresult = await weatherResponse.json(); 
 

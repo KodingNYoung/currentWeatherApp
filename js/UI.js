@@ -18,8 +18,8 @@ class UI {
         this.countryUI = document.getElementById("countryText");
     
         // latitide and longitude
-        this.lon = document.getElementById("long");
-        this.lat = document.getElementById("lat");
+        this.longUI = document.getElementById("long");
+        this.latUI = document.getElementById("lat");
     }
 
     // show form
@@ -109,8 +109,8 @@ class UI {
         
         this.countryUI.textContent = weatherUpdate.sys.country;
 
-        this.lon.textContent = `${weatherUpdate.coord.lon}°`;
-        this.lat.textContent = `${weatherUpdate.coord.lat}°`;
+        this.longUI.textContent = `${weatherUpdate.coord.lon}°`;
+        this.latUI.textContent = `${weatherUpdate.coord.lat}°`;
     }
 
     
