@@ -42,43 +42,59 @@ updateBtn.addEventListener("click", (e) => {
     handleLocation({city,country});
 })
 
-const handleLocation = (location) => {
-    if (location.city){
-        const city = location.city;
-        const country = location.country;
+// to the auto update btn
+autoUpdateBtn.addEventListener("click",async () => {
+    // init Location object
+    const location = new Location();
 
+    // get the coordinates
+    const locationID = await location.getCoords();
+
+    const long = locationID.long;
+    const lat = locationID.lat;
+
+    handleLocation({lat, long})    
+})
+
+
+const handleLocation = (location) => {
+    const long = location.long;
+    const lat = location.lat;
+    const city = location.city;
+    const country = location.country;
+
+    let update;
+
+    const handleWeatherUpdate = (val) => {
+        if (val.message){
+            // show alert
+            ui.showNoCityToast(val.message, "no-city");
+        }else{
+            // display it
+            ui.updateUI(val)
+        }
+    }
+
+    // console.log("CITY before here", city)
+    if (city){
+        // console.log("here", city)
         // if city input is empty show alert
         if (city === "") {
             ui.showFormAlert("City is required", "");
         }else{
             // fetch the weather updates for the location
-            const update = weather.fetchWeatherUpdateByCity(city, country);
-            update.then((val) => {
-                if (val.message){
-                    // show alert
-                    ui.showNoCityToast(val.message, "no-city");
-                }else{
-                    // display it
-                    ui.updateUI(val)
-                }
-            })
-            .catch((err) => console.log(err))
+            update = weather.fetchWeatherUpdateByCity(city, country);
+
+            console.log(update);
         }
-    }else if (location.lat && location.long) {
-        // fetch the weather updates for the location
-        console.log(location.lat, location.long)
-        const update = weather.fetchWeatherUpdateByCoords(location.lat, location.long);
-        update.then((val) => {
-            if (val.message){
-                // show alert
-                ui.showNoCityToast(val.message, "invalid co-ordinates");
-            }else{
-                // display it
-                ui.updateUI(val)
-            }
-        })
-        .catch((err) => console.log(err)) 
+    }else if (lat && long) {
+        // fetch the weather updates for the coordinates
+        update = weather.fetchWeatherUpdateByCoords(lat, long); 
     }
+
+    update.then(val => handleWeatherUpdate(val))
+            
+    .catch((err) => console.log(err))
 
     // clear form
     ui.clearForms();
@@ -86,24 +102,3 @@ const handleLocation = (location) => {
     // hide form body
     ui.hideForm();
 }
-
-const setLocation = async () => {
-    // console.log("getting location")
-    // init Location object
-    const location = new Location();
-
-    
-
-    const locationID = await location.getLocation();
-
-    const long = locationID.long;
-    const lat = locationID.lat;
-
-
-    // console.log(lat, long);
-
-    handleLocation({lat, long})
-
-}
-
-autoUpdateBtn.addEventListener("click", setLocation)

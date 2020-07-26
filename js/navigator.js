@@ -4,7 +4,7 @@ class Location {
         this.lat;
     }
 
-    setLocation () {
+    setCoords () {
         return new Promise((resolve, reject) => {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(pos => {
@@ -19,7 +19,7 @@ class Location {
         })
     }
 
-    async getLocation () {
-        return await this.setLocation();
+    async getCoords () {
+        return await this.setCoords();
     }
 }

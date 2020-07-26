@@ -18,7 +18,7 @@ class Weather{
 
     async fetchWeatherUpdateByCoords (lat, long) {
         try{
-            const weatherResponse = await fetch(`${this.APIurl}?lat=${city}&lon=${country}&appid=${this.APIkey}`);
+            const weatherResponse = await fetch(`${this.APIurl}?lat=${lat}&lon=${long}&appid=${this.APIkey}`);
 
             const JSONresult = await weatherResponse.json(); 
 
